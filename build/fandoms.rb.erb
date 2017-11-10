@@ -1,0 +1,7 @@
+module FandomWord
+  module Fandoms
+<% fandoms.each do |category| -%>
+<%= "    #{category.dup.to_s.gsub('-','_').upcase} = '#{category.dup.to_s.downcase}'.freeze" %>
+<% end -%>
+  end
+end

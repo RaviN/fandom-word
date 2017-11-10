@@ -1,0 +1,3 @@
+AllCops:
+  Exclude:
+    - lib/fandom-word.rb
