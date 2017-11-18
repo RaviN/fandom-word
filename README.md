@@ -33,5 +33,5 @@ Adding Fandoms
     - of
     - words
   ```
-* Make sure all tests are still passing ( we will have tests, promise )
+* Make sure all tests are still passing and there is 100% code coverage
 * Submit pull request

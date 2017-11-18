@@ -1,6 +1,8 @@
 module FandomWord
+  # Available Fandoms. Categories to choose for your random word.
   module Fandoms
 <% fandoms.each do |category| -%>
+<%= "    # Available fandom category #{category.dup.to_s}" %>
 <%= "    #{category.dup.to_s.gsub('-','_').upcase} = '#{category.dup.to_s.downcase}'.freeze" %>
 <% end -%>
   end

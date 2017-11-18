@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary     = 'Fandom Word'
   spec.description = 'Fandom Word Generator'
   spec.authors     = ['Ravi Nath', 'Manni Reyes']
-  spec.email       = %w[majindm24@gmail.com manni@email.com]
+  spec.email       = %w[majindm24@gmail.com manni.reies@gmail.com]
   spec.files       = `git ls-files`
                      .split($RS)
                      .reject { |file| file.match(/^(spec|word-lists|build)/) }

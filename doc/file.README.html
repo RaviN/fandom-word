@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.9.9
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'>
+<h1 id="label-fandom-word">fandom-word</h1>
+
+<p>A fandom word generator that returns random words from various fandoms.</p>
+
+<h2 id="label-How+to+use">How to use</h2>
+
+<p>fandom-word allows you to get a randomized word pertaining to any fandom.
+You can also use it to get a randomized word for a specific fandom.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="FandomWord.html" title="FandomWord (module)">FandomWord</a></span></span><span class='period'>.</span><span class='id identifier rubyid_random_word'><span class='object_link'><a href="FandomWord.html#random_word-class_method" title="FandomWord.random_word (method)">random_word</a></span></span> <span class='comment'># returns a word from any fandom category
+</span><span class='const'><span class='object_link'><a href="FandomWord.html" title="FandomWord (module)">FandomWord</a></span></span><span class='period'>.</span><span class='id identifier rubyid_random_word_from_fandom'>random_word_from_fandom</span><span class='lparen'>(</span><span class='id identifier rubyid_fandom_name'>fandom_name</span><span class='rparen'>)</span> <span class='comment'># returns a word from a specific fandom
+</span></code></pre>
+
+<p>Available fandoms are defined as constants in
+<code>FandomWord::Fandoms</code></p>
+
+<h2 id="label-Adding+Fandoms">Adding Fandoms</h2>
+<ul><li>
+<p>Fork the repo</p>
+</li><li>
+<p>Add your fandom word list ( keep it clean or your pull request will be
+rejected )</p>
+</li><li>
+<p>When adding your word list use the following format  “`yaml  :categories:</p>
+<ul><li>
+<p>list</p>
+</li><li>
+<p>of</p>
+</li><li>
+<p>applicable</p>
+</li><li>
+<p>categories  :words:</p>
+</li><li>
+<p>list</p>
+</li><li>
+<p>of</p>
+</li><li>
+<p>words  “`</p>
+</li></ul>
+</li><li>
+<p>Make sure all tests are still passing and there is 100% code coverage</p>
+</li><li>
+<p>Submit pull request</p>
+</li></ul>
+</div></div>
+
+      <div id="footer">
+  Generated on Sat Nov 18 15:08:10 2017 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.9 (ruby-2.1.9).
+</div>
+
+    </div>
+  </body>
+</html>
