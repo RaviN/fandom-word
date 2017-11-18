@@ -1,3 +1,6 @@
 AllCops:
   Exclude:
     - lib/fandom-word.rb
+
+Metrics/LineLength:
+  Max: 120

@@ -1,17 +1,18 @@
 require 'ostruct'
-require_relative 'lib/fandom_word'
+
+# Require relative all library files. No require relatives should be necessary below the next couple lines
+source_files_to_require = Dir['lib/**/*.rb']
+source_files_to_require.each { |file_path| require_relative file_path }
 
 task :default do
-  puts "RANDOM MECHA WORD: #{FandomWord.random_word_from_fandom 'mecha'}"
-  puts "RANDOM ANIME WORD: #{FandomWord.random_word_from_fandom 'anime'}"
-  puts "RANDOM CATEGORY WORD: #{FandomWord.random_word}"
+  Rake::Task["demo"].invoke
 end
 
+desc 'Collects all word lists and compiles into words.data'
 task :build_data do
   require 'erb'
 
   require 'yaml'
-  require_relative 'lib/fandom_word_catalog'
 
   DATA_FILE = 'data/words.data'.freeze
   WORD_LIST_GLOB = 'word-lists/**/*.yml'.freeze
@@ -41,4 +42,35 @@ task :build_data do
 
   erb = Dummy.new(fandoms: catalog.fandoms)
   File.write('lib/fandoms.rb', erb.render(File.read('build/fandoms.rb.erb')))
+end
+
+desc 'Perform a couple demonstrations of FandomWord'
+task :demo do
+  puts "RANDOM MECHA WORD: #{FandomWord.random_word_from_fandom 'mecha'}"
+  puts "RANDOM ANIME WORD: #{FandomWord.random_word_from_fandom 'anime'}"
+  puts "RANDOM ANIME OR MECHA WORD: #{FandomWord.random_word_from_fandom %w[anime mecha]}"
+  puts "RANDOM WORD: #{FandomWord.random_word}"
+end
+
+desc 'Performs common checks / house keeping as a prerequisite before submitting a pull request'
+task :preflight do
+  # Validate style is up to standards
+  system 'bundle exec rubocop'
+
+  # Validate all tests pass
+  system 'bundle exec rspec'
+
+  # Document code
+  system 'bundle exec yard'
+end
+
+desc 'Get benchmark'
+task :determine_benchmark_ips do
+  require 'benchmark/ips'
+
+  Benchmark.ips do |x|
+    x.config time: 5, warmup: 2
+    x.report('Get Random Word') { FandomWord.random_word }
+    x.compare!
+  end
 end
