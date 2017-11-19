@@ -5,9 +5,9 @@ require 'version'
 Gem::Specification.new do |spec|
   spec.name        = 'fandom-word'
   spec.version     = FandomWord::VERSION
-  spec.date        = '2017-11-09'
+  spec.date        = Date.today.to_s
   spec.summary     = 'Fandom Word'
-  spec.description = 'Fandom Word Generator'
+  spec.description = 'A fandom word generator that returns random words from various fandoms.'
   spec.authors     = ['Ravi Nath', 'Manni Reyes']
   spec.email       = %w[majindm24@gmail.com manni.reies@gmail.com]
   spec.files       = `git ls-files`

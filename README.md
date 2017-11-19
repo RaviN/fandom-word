@@ -28,14 +28,14 @@ Adding Fandoms
   * When adding your word list use the following format
   ```yaml
   :categories:
-    - list
-    - of
-    - applicable
-    - categories
+  - list
+  - of
+  - applicable
+  - categories
   :words:
-    - list
-    - of
-    - words
+  - list
+  - of
+  - words
   ```
 * Make sure all tests are still passing and there is 100% code coverage
 * Submit pull request
