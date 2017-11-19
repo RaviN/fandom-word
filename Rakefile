@@ -5,7 +5,8 @@ source_files_to_require = Dir['lib/**/*.rb']
 source_files_to_require.each { |file_path| require_relative file_path }
 
 task :default do
-  Rake::Task["demo"].invoke
+  Rake::Task['demo'].invoke
+  Rake::Task['pre_flight'].invoke
 end
 
 desc 'Collects all word lists and compiles into words.data'
@@ -46,22 +47,24 @@ end
 
 desc 'Perform a couple demonstrations of FandomWord'
 task :demo do
-  puts "RANDOM MECHA WORD: #{FandomWord.random_word_from_fandom 'mecha'}"
-  puts "RANDOM ANIME WORD: #{FandomWord.random_word_from_fandom 'anime'}"
-  puts "RANDOM ANIME OR MECHA WORD: #{FandomWord.random_word_from_fandom %w[anime mecha]}"
+  puts "RANDOM MECHA WORD: #{FandomWord.random_word 'mecha'}"
+  puts "RANDOM ANIME WORD: #{FandomWord.random_word 'anime'}"
+  puts "RANDOM ANIME OR MECHA WORD: #{FandomWord.random_word %w[anime mecha]}"
   puts "RANDOM WORD: #{FandomWord.random_word}"
 end
 
 desc 'Performs common checks / house keeping as a prerequisite before submitting a pull request'
-task :preflight do
-  # Validate style is up to standards
-  system 'bundle exec rubocop'
+task :pre_flight do
+  raise 'One of the pre flight steps failed!' if [
+    # Validate style is up to standards
+    system('bundle exec rubocop -DES'),
 
-  # Validate all tests pass
-  system 'bundle exec rspec'
+    # Validate all tests pass
+    system('bundle exec rspec'),
 
-  # Document code
-  system 'bundle exec yard'
+    # Document code
+    system('bundle exec yard')
+  ].include? false
 end
 
 desc 'Get benchmark'

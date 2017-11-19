@@ -287,12 +287,12 @@ fandoms</p>
       <pre class="lines">
 
 
-58
 59
-60</pre>
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/fandom_word.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/fandom_word.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_available_fandoms'>available_fandoms</span>
   <span class='ivar'>@catalog</span><span class='period'>.</span><span class='id identifier rubyid_fandoms'>fandoms</span>
@@ -380,7 +380,8 @@ specified.</p>
 52
 53
 54
-55</pre>
+55
+56</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/fandom_word.rb', line 44</span>
@@ -388,6 +389,7 @@ specified.</p>
 <span class='kw'>def</span> <span class='id identifier rubyid_random_word'>random_word</span><span class='lparen'>(</span><span class='id identifier rubyid_fandom_name_or_names'>fandom_name_or_names</span> <span class='op'>=</span> <span class='id identifier rubyid_random_fandom'>random_fandom</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_fandom_name'>fandom_name</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_fandom_name_or_names'>fandom_name_or_names</span>
                 <span class='kw'>when</span> <span class='const'>Array</span>
+                  <span class='id identifier rubyid_validate_fandom_list'>validate_fandom_list</span> <span class='id identifier rubyid_fandom_name_or_names'>fandom_name_or_names</span>
                   <span class='id identifier rubyid_random_fandom_name_from'>random_fandom_name_from</span> <span class='id identifier rubyid_fandom_name_or_names'>fandom_name_or_names</span>
                 <span class='kw'>when</span> <span class='const'>String</span>
                   <span class='id identifier rubyid_fandom_name_or_names'>fandom_name_or_names</span>
@@ -407,7 +409,7 @@ specified.</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Nov 18 15:08:11 2017 by
+  Generated on Sat Nov 18 23:09:40 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.1.9).
 </div>

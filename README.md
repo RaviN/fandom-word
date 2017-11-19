@@ -1,5 +1,7 @@
 fandom-word
 ====
+[![Gem Version](https://badge.fury.io/rb/fandom-word.svg)](https://badge.fury.io/rb/fandom-word)
+[![Build Status](https://travis-ci.org/RaviN/fandom-word.svg?branch=master)](https://travis-ci.org/RaviN/fandom-word)
 
 A fandom word generator that returns random words from various fandoms.
 
@@ -11,7 +13,9 @@ You can also use it to get a randomized word for a specific fandom.
 
 ```ruby
 FandomWord.random_word # returns a word from any fandom category
-FandomWord.random_word_from_fandom(fandom_name) # returns a word from a specific fandom
+FandomWord.random_word(fandom_name) # returns a word from a specific fandom
+FandomWord.random_word([fandom_name_1, fandom_name_2]) # returns a word from one of the fandoms
+FandomWord.fandoms # list fandoms
 ```
 
 Available fandoms are defined as constants in `FandomWord::Fandoms`

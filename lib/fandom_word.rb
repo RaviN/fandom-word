@@ -91,7 +91,7 @@ module FandomWord
     # Raises if fandom_list is using a fandom not in available fandoms
     def validate_fandom_list(fandom_list)
       return if (fandom_list & available_fandoms).size == fandom_list.size
-      raise ArgumentError, "Explicit List: #{fandom_list } \n Available Fandoms: #{available_fandoms}"
+      raise ArgumentError, "Explicit List: #{fandom_list} \n Available Fandoms: #{available_fandoms}"
     end
   end
 end

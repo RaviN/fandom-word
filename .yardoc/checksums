@@ -1,5 +1,5 @@
 lib/fandoms.rb b64c561612318f50578311a8d13690112dc88f7d
 lib/version.rb 4ac8aaa487e159a905deb0dfe276494a6c1f2047
 lib/fandom-word.rb 9e292912f4cce8af8b2ad6b655df6e73931a6cc8
-lib/fandom_word.rb a392fa864bea4af2a64e09340bd8e9782de84c69
+lib/fandom_word.rb 0d0359cf3ced737a2d9a69b204c348ba5f7cb5d7
 lib/fandom_word_catalog.rb 6a0254bf451a21cf7f94a12caa70133673515856

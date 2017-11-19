@@ -11,7 +11,7 @@ module FandomWordSpecs
             it('category anime') { subject.random_word FandomWord::Fandoms::ANIME }
           end
 
-          it('multiple categories') { subject.random_word %w(bigo anime) }
+          it('multiple categories') { subject.random_word %w[bigo anime] }
         end
 
         context 'Unhappy Paths' do
@@ -21,11 +21,11 @@ module FandomWordSpecs
 
           context 'multiple categories' do
             it 'non existent fandom categories' do
-              expect { subject.random_word %w(I_AM_AN_UNLIKELY_CATEGORY so_am_i) }.to raise_exception ArgumentError
+              expect { subject.random_word %w[I_AM_AN_UNLIKELY_CATEGORY so_am_i] }.to raise_exception ArgumentError
             end
 
             it 'at least one non existent category among valid categories' do
-              expect { subject.random_word %w(I_AM_AN_UNLIKELY_CATEGORY anime) }.to raise_exception ArgumentError
+              expect { subject.random_word %w[I_AM_AN_UNLIKELY_CATEGORY anime] }.to raise_exception ArgumentError
             end
           end
 
@@ -35,7 +35,9 @@ module FandomWordSpecs
         end
       end
 
-      it('#fandoms') { subject.fandoms }
+      describe('#fandoms') do
+        it('returns array of strings') { expect(subject.fandoms.all? { |element| element.class == String }).to be true }
+      end
     end
 
     describe FandomWord::FandomRandomizer do
