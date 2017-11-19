@@ -5,14 +5,13 @@ source_files_to_require = Dir['lib/**/*.rb']
 source_files_to_require.each { |file_path| require_relative file_path }
 
 task :default do
-  Rake::Task['demo'].invoke
   Rake::Task['pre_flight'].invoke
+  Rake::Task['demo'].invoke
 end
 
 desc 'Collects all word lists and compiles into words.data'
 task :build_data do
   require 'erb'
-
   require 'yaml'
 
   DATA_FILE = 'data/words.data'.freeze
@@ -23,7 +22,7 @@ task :build_data do
   catalog = FandomWord::FandomWordCatalog.new
 
   Dir.glob(WORD_LIST_GLOB) do |file_path|
-    puts "Processing: #{file_path}"
+    puts "Adding to words.data: #{file_path}"
     word_list = YAML.load_file(file_path)
     word_list[:words].each do |word|
       catalog.add_word(word, word_list[:categories])
@@ -55,16 +54,24 @@ end
 
 desc 'Performs common checks / house keeping as a prerequisite before submitting a pull request'
 task :pre_flight do
-  raise 'One of the pre flight steps failed!' if [
-    # Validate style is up to standards
-    system('bundle exec rubocop -DES'),
+  def system_helper(command)
+    raise "One of the pre flight steps failed! #{command}" unless system command
+  end
 
-    # Validate all tests pass
-    system('bundle exec rspec'),
+  # Validate style is up to standards
+  system_helper 'bundle exec rubocop -DES'
 
-    # Document code
-    system('bundle exec yard')
-  ].include? false
+  # Validate all tests pass
+  system 'bundle exec rspec'
+
+  # Sort original word list alphabetically
+  Rake::Task['sort_word_lists'].invoke
+
+  # Build word data
+  Rake::Task['build_data'].invoke
+
+  # Document code
+  system 'bundle exec yard'
 end
 
 desc 'Get benchmark'
@@ -75,5 +82,17 @@ task :determine_benchmark_ips do
     x.config time: 5, warmup: 2
     x.report('Get Random Word') { FandomWord.random_word }
     x.compare!
+  end
+end
+
+desc 'Sort word list fandoms and words in alphabetical order'
+task :sort_word_lists do
+  require 'yaml'
+  WORD_LIST_GLOB = 'word-lists/**/*.yml'.freeze
+  Dir.glob(WORD_LIST_GLOB) do |file_path|
+    puts "Sorting word list alphabetically: #{file_path}"
+    word_list = YAML.load_file file_path
+    word_list.each_value(&:sort!)
+    File.open(file_path, 'w') { |file| file.write word_list.to_yaml }
   end
 end
