@@ -15,4 +15,5 @@ Gem::Specification.new do |spec|
                      .reject { |file| file.match(/^(spec|word-lists|build)/) }
   spec.homepage    = 'http://github.com/RaviN/fandom-word'
   spec.license     = 'Unlicense'
+  spec.required_ruby_version = '>= 2.1.0'
 end
